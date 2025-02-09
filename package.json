@@ -1,0 +1,19 @@
+{
+  "name": "wwwroot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "sass --watch WebGUI/Scss/index.scss:WebGUI/wwwroot/app.css",
+    "start": "sass WebGUI/Scss/index.scss:WebGUI/wwwroot/app.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ModdingTheWorld/sparklingThunderWeb"
+  },
+  "private": true,
+  "dependencies": {
+    "scss": "^0.2.4"
+  }
+}
+
