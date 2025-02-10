@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "sass": "^1.84.0",
     "scss": "^0.2.4"
   }
 }
-
