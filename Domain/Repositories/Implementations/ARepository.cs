@@ -1,56 +1,72 @@
 ﻿using System.Linq.Expressions;
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using Model.Configurations;
 
 namespace Domain.Repositories.Implementations;
 
 public abstract class ARepository<TEntity>: IRepository<TEntity> where TEntity : class{
+    protected readonly ItemContext Context;
+    protected readonly DbSet<TEntity> Table;
+    protected ARepository(ItemContext context) {
+        Context = context;
+        Table = context.Set<TEntity>();
+    }
     public TEntity? Create(TEntity entity)
     {
-        throw new NotImplementedException();
+        Table.Add(entity);
+        Context.SaveChanges();
+        return entity;
     }
 
     public List<TEntity>? CreateRange(List<TEntity> entities)
     {
-        throw new NotImplementedException();
+        Table.AddRange(entities);
+        Context.SaveChanges();
+        return entities;
     }
 
     public void Update(TEntity entity)
     {
-        throw new NotImplementedException();
+        Context.ChangeTracker.Clear();
+        Table.Update(entity);
+        Context.SaveChanges();
     }
 
     public void UpdateRange(List<TEntity> entities)
     {
-        throw new NotImplementedException();
+        Table.UpdateRange(entities);
+        Context.SaveChanges();
     }
 
     public TEntity? Read(int id)
     {
-        throw new NotImplementedException();
+        return Table.Find(id);
     }
 
     public List<TEntity>? Read(Expression<Func<TEntity, bool>> predicate)
     {
-        throw new NotImplementedException();
+        return Table.Where(predicate).ToList();
     }
 
     public List<TEntity>? Read(int start, int count)
     {
-        throw new NotImplementedException();
+        return Table.Skip(start).Take(count).ToList();
     }
 
     public List<TEntity>? ReadAll()
     {
-        throw new NotImplementedException();
+        return Table.ToList();
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        if (Table.Find(id) != null)
+            Table.Remove(Table.Find(id)!);
     }
 
     public void Delete(TEntity entity)
     {
-        throw new NotImplementedException();
+        Table.Remove(entity);
     }
 }
