@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entites;
 
-[Table("ENTITIES")]
-public class Entity
+public class Entity : ItemType
 {
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column("ENTITY_ID")]
-    public int EntityId { get; set; }
+    [Column("DESCRIPTION"), MaxLength(350)] 
+    public string? Description {get; set; }
+    
 }

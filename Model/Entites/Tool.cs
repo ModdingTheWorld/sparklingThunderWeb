@@ -3,9 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entites;
 
-[Table("TOOLS")]
-public class Tool
+
+public class Tool : ItemType
 {
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column("TOOL_ID")]
-    public int ToolId { get; set; }
+
 }

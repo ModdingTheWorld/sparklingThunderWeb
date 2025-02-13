@@ -1,0 +1,33 @@
+﻿@page "/itemView"
+@using Domain.Interfaces
+@using Model.Entites
+@inject IRepository<Item> ItemRepository;
+@inject IRepository<Block> BlockRepository;
+@rendermode InteractiveServer
+<h3>ItemView</h3>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @foreach (Item item in Items!)
+                {
+                    @item
+                }
+            </div>
+        </div>
+    </div>
+
+</section>
+
+@code {
+    public List<Item>? Items { get; set; }
+
+
+    
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Items = ItemRepository.ReadAll();
+    }
+
+}

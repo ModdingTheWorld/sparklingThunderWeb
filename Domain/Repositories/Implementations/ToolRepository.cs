@@ -3,7 +3,7 @@ using Model.Entites;
 
 namespace Domain.Repositories.Implementations;
 
-public class ToolRepository: ARepository<Block>
+public class ToolRepository: ARepository<Tool>
 {
     public ToolRepository(ItemContext context) : base(context)
     {
