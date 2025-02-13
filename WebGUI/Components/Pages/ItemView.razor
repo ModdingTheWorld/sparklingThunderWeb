@@ -2,7 +2,6 @@
 @using Domain.Interfaces
 @using Model.Entites
 @inject IRepository<Item> ItemRepository;
-@inject IRepository<Entity> EntityRepository;
 @rendermode InteractiveServer
 <h3>ItemView</h3>
 <section>
@@ -16,31 +15,15 @@
             </div>
         </div>
     </div>
-    <button @onclick="add">
-        vgvrgv
-    </button>
-
 </section>
 
 @code {
     public List<Item>? Items { get; set; }
-    public List<Entity>? Entities { get; set; }
-
-    public void add()
-    {
-        Entity e = new Entity()
-        {
-            Description = "dfvevrve"
-        };
-        EntityRepository.Create(e);
-    }
-
     
     protected override void OnInitialized()
     {
         base.OnInitialized();
         Items = ItemRepository.ReadAll();
-        Entities = EntityRepository.ReadAll();
     }
 
 }
