@@ -11,7 +11,9 @@ public class Entity : Item
         Type = EItemType.Entity;
     }
 
+    
     [Column("DESCRIPTION"), MaxLength(350)] 
     public string? Description {get; set; }
+    
     
 }
