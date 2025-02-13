@@ -8,6 +8,6 @@ public class Tool : Item
 {
     public Tool()
     {
-        base.Type = EItemType.Tool;
+        Type = EItemType.Tool;
     }
 }

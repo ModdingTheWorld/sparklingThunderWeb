@@ -7,7 +7,8 @@ public class Entity : Item
 {
     public Entity()
     {
-        base.Type = EItemType.Entity;
+        //base.Type = EItemType.Entity; using the Type in the 'base' constructor 
+        Type = EItemType.Entity;
     }
 
     [Column("DESCRIPTION"), MaxLength(350)] 

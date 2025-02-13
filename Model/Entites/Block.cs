@@ -7,6 +7,6 @@ public class Block : Item
 {
     public Block()
     {
-        base.Type = EItemType.Block;
+        Type = EItemType.Block;
     }
 }

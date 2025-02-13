@@ -8,6 +8,6 @@ public class Weapon : Item
 {
     public Weapon()
     {
-        base.Type = EItemType.Weapon;
+        Type = EItemType.Weapon;
     }
 }
