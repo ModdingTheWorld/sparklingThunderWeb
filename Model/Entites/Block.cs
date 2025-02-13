@@ -3,7 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entites;
 
-public class Block : ItemType
+public class Block : Item
 {
-
+    public Block()
+    {
+        base.Type = EItemType.Block;
+    }
 }

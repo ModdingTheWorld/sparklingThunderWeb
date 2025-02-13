@@ -4,7 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Model.Entites;
 
 
-public class Weapon : ItemType
+public class Weapon : Item
 {
-
+    public Weapon()
+    {
+        base.Type = EItemType.Weapon;
+    }
 }

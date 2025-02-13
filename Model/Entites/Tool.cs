@@ -4,7 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Model.Entites;
 
 
-public class Tool : ItemType
+public class Tool : Item
 {
-
+    public Tool()
+    {
+        base.Type = EItemType.Tool;
+    }
 }
