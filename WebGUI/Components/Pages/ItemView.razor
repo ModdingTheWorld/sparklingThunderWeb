@@ -1,6 +1,7 @@
 ﻿@page "/itemView"
 @using Domain.Interfaces
 @using Model.Entites
+@using WebGUI.Components.BlazorComponents
 @inject IRepository<Item> ItemRepository;
 @rendermode InteractiveServer
 <h3>ItemView</h3>
@@ -10,7 +11,7 @@
             <div class="col-12">
                 @foreach (Item item in Items!)
                 {
-                    @item
+                    <ItemComponent ThisItem=@item></ItemComponent>
                 }
             </div>
         </div>

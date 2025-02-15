@@ -1,0 +1,15 @@
+@using Model.Entites
+<div class="card">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">@ThisItem!.Name</h5>
+        <p class="card-text">@ThisItem.Type</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+
+
+
+@code {
+    [Parameter] public Item? ThisItem { get; set; }
+}
