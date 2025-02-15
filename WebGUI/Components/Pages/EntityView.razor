@@ -1,0 +1,32 @@
+﻿@using Model.Entites
+@inject IRepository<Entity> EntityRepository;
+@page "/entityView"
+@using Domain.Interfaces
+<h3>EntityView</h3>
+<section class="entity-view-se">
+    <div class="container">
+        <div>
+            <div @onclick="() => AddEntity()">
+                Add Entity
+            </div>
+        </div>
+        @foreach (Entity currentEntity in Entities!)
+        {
+            @currentEntity.Name
+        }
+    </div>
+</section>
+@code {
+    private List<Entity>? Entities { get; set; }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Entities = EntityRepository.ReadAll();
+    }
+
+    private void AddEntity()
+    {
+        EntityRepository.Create(new Entity() { Name = "das dogo" });
+        Console.WriteLine("------------------");
+    }
+}

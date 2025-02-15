@@ -4,7 +4,7 @@
 @inject IRepository<Item> ItemRepository;
 @rendermode InteractiveServer
 <h3>ItemView</h3>
-<section>
+<section> 
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -18,12 +18,12 @@
 </section>
 
 @code {
-    public List<Item>? Items { get; set; }
+    private List<Item>? Items { get; set; }
     
     protected override void OnInitialized()
     {
         base.OnInitialized();
         Items = ItemRepository.ReadAll();
     }
-
+ 
 }
