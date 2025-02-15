@@ -1,32 +1,72 @@
 ﻿@using Model.Entites
-@inject IRepository<Entity> EntityRepository;
-@page "/entityView"
+@using WebGUI.Components.BlazorComponents
 @using Domain.Interfaces
+@inject IRepository<Entity> EntityRepository;
+@rendermode InteractiveServer
+
+
+@page "/entityView"
 <h3>EntityView</h3>
 <section class="entity-view-se">
     <div class="container">
-        <div>
-            <div @onclick="() => AddEntity()">
-                Add Entity
+
+            <!-- @onclick offnet sich ein modal man gibt die sachen ein das Entity wird erstelt in eine locale var 'NewEntity' gespeichert und dann wird das modal geschlossen und die 'AddEntity' wird mit 'NewEntity' aufgerufen   -->
+            
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" @onclick="ResetEntity">
+            Create new Entity
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">New Entity</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Entity Name:</p>
+                        <input @bind="NewEntity!.Name" type="text" class="form-control" placeholder="Entity Name" aria-label="entityName" aria-describedby="addon-wrapping">
+                        <p>Upload Texture:</p>
+                        <input name="entityTexture" type="file" class="form-control" id="entityTexture">
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
+                            <textarea @bind="NewEntity.Description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @onclick="() => AddEntity(NewEntity)">Create</button>
+                    </div>
+                </div>
             </div>
         </div>
+
+        
         @foreach (Entity currentEntity in Entities!)
         {
-            @currentEntity.Name
+            <EntityComtonent ThisEntity="currentEntity"></EntityComtonent>
         }
     </div>
 </section>
 @code {
     private List<Entity>? Entities { get; set; }
+    private Entity? NewEntity { get; set; } = new Entity();
+
+    
     protected override void OnInitialized()
     {
         base.OnInitialized();
         Entities = EntityRepository.ReadAll();
     }
 
-    private void AddEntity()
+    private void AddEntity(Entity entity)
     {
-        EntityRepository.Create(new Entity() { Name = "das dogo" });
-        Console.WriteLine("------------------");
+        EntityRepository.Create(entity);
+        Entities!.Add(entity);
+    }
+
+    private void ResetEntity()
+    {
+        NewEntity = new Entity();
     }
 }

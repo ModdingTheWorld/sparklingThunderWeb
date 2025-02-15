@@ -1,0 +1,8 @@
+@using Model.Entites
+<h3>@ThisEntity!.Name</h3>
+<p>
+    Description: @ThisEntity.Description
+</p>
+@code {
+    [Parameter] public Entity? ThisEntity { get; set; }
+}
