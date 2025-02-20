@@ -1,10 +1,17 @@
+@using Domain.Interfaces
 @using Model.Entites
+@inject IRepository<Item> ItemRepository;
 <div class="card">
-    <img src="Images/fantasy-creature.jpg" class="card-img-top" alt="...">
+    <img src="Images/fantasy-creature.jpg" class="card-img-top img-holder" alt="...">
     <div class="card-body">
-        <h5 class="card-title">@ThisItem!.Name</h5>
-        <p class="card-text">@ThisItem.Type</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">@ThisItem!.Name</h5>
+            <div>
+            <a href="#" class="btn btn-primary">Edit</a>
+            <button class="btn btn-primary" @onclick="() => Delite(ThisItem)">Del</button>
+            </div>
+        </div>
+            <p class="card-text">@ThisItem.Type</p>
     </div>
 </div>
 
@@ -12,4 +19,9 @@
 
 @code {
     [Parameter] public Item? ThisItem { get; set; }
+    
+    private void Delite(Item item)
+    {
+        ItemRepository.Delete(item.ItemId);
+    }
 }
