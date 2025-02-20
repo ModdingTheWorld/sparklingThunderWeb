@@ -8,12 +8,12 @@
 <section> 
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                @foreach (Item item in Items!)
-                {
+            @foreach (Item item in Items!)
+            {
+                <div class="col-3">
                     <ItemComponent ThisItem=@item></ItemComponent>
-                }
-            </div>
+                </div>
+            }
         </div>
     </div>
 </section>
