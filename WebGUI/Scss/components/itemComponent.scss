@@ -1,0 +1,10 @@
+﻿@use "../abstracts";
+.card{
+  @extend %Component;
+  .btn-edit{
+    border-radius: 0 0 0 20px;
+  }
+  .btn-del{
+    border-radius: 0 0 20px 0;
+  }
+}

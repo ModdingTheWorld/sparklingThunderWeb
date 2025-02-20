@@ -1,0 +1,17 @@
+﻿%Component{
+  border-radius: 20px;
+  height: 100%;
+  display: flex;
+  .card-body{
+    max-height: 14rem;
+  }
+  .btn-holder{
+    margin-top: auto;
+  }
+  .img-holder{
+    height: 40%;
+    object-fit:cover;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+}
