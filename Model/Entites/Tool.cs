@@ -1,13 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace Model.Entites;
 
 
-public class Tool : Item
+public class Tool
 {
-    public Tool()
-    {
-        Type = EItemType.Tool;
-    }
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column("TOOL_ID")]
+    public int ToolId { get; set; }
+    [Column("NAME"), MaxLength(20)] public string? Name { get; set; } = null;
+
 }

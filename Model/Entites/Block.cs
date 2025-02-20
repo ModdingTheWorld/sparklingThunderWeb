@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model.Entites;
 
-public class Block : Item
+public class Block
 {
-    public Block()
-    {
-        Type = EItemType.Block;
-    }
+    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity), Column("BLOCK_ID")]
+    public int BlockId { get; set; }
+    [Column("NAME"), MaxLength(20)] public string? Name { get; set; } = null;
+
 }
