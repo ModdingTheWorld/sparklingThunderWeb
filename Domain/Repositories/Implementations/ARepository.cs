@@ -63,10 +63,12 @@ public abstract class ARepository<TEntity>: IRepository<TEntity> where TEntity :
     {
         if (Table.Find(id) != null)
             Table.Remove(Table.Find(id)!);
+        Context.SaveChanges();
     }
 
     public void Delete(TEntity entity)
     {
         Table.Remove(entity);
+        Context.SaveChanges();
     }
 }
